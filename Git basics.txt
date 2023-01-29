@@ -1,0 +1,36 @@
+Activate virtual environment with cd venv/bin source activate
+Deactivate virtual environment with cd venv/bin deactivate
+
+Set env with flask:
+export FLASK_ENV=development
+export FLASK_APP=main.py
+flask run
+Source activate from within VENV directory
+CTRL+C to stop server
+
+
+Useful terminal commands:
+pwd
+Pip freeze
+Mkdir
+Touch main.py creates a file
+
+1. Use “cd ~/“ to navigate to the root for your computer in my case that’s /Users/johnmolesworth
+2. Mkdir .ssh which makes a hidden folder
+3. ssh-keygen -t rsa
+4. Hit return to use default file type
+5. Hit return to not use password
+6. Hit return again
+7. Et voila your key is generated
+8. cat id_rsa.pub to show public key 
+
+
+GIT setup 
+$ git config --global user.name "Your Name"
+$ git config --global user.email "you@youraddress.com"
+$ git config --global push.default matching
+$ git config --global alias.co checkout
+$ git init
+
+
+Setup a new repository on GitHub.com
