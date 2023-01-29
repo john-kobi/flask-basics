@@ -34,3 +34,8 @@ $ git init
 
 
 Setup a new repository on GitHub.com
+Follow existing repository from commandline instructions.
+
+From then on use "git add ." to add all changes to stage.
+Then "git commit -am 'insert notes here'"
+Then "git push" to upload changes
