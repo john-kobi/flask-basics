@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>That's an error 500 internal server error</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<p>That's an error 500 internal server error. Try again…</p>
+<a href="{{ url_for('index') }}">Take me home</a>
+{% endblock %}

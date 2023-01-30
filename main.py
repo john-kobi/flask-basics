@@ -1,7 +1,10 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, redirect
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 # Create an instance of Flask
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'h8f76234bf42672nd22d9hHIDW98272^*@IB(@BHFNB9'
 
 # Jinja filters:
 # safe
@@ -13,11 +16,15 @@ app = Flask(__name__)
 # striptags
 
 
+class MyForm(FlaskForm):
+    name = StringField("What's your name?", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+
+
 # Create a route decorator
 @app.route('/')
 def index():
-    # return render_template('index.html')
-    return '<h1 style="color:red;">Hello World!</h1>'
+    return render_template('index.html')
 
 
 @app.route('/user/<name>')
