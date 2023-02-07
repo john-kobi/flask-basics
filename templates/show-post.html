@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="post-image" style="background-image:url('{{ post.img_url }}');height:300px;">
+<!--<img src="{{ post.img_url }}" style="height:200px;">-->
+</div>
+<h1>{{ post.title }}</h1>
+<h3>{{ post.sub_title }}</h3>
+<p>{{ post.body }}</p>
+<h5>{{ post.date }}</h5>
+<h4><b>By {{ post.author }}</b></h4>
+
+<br>
+<a class="btn btn-warning" href="{{ url_for('edit_post', id=post.id)}}">Edit</a>
+          <a class="btn btn-secondary" href="{{ url_for('delete_post', id=post.id)}}">Delete</a>
+
+{% endblock %}

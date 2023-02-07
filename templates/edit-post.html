@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.title.label(class="form-label") }}: {{ form.title(class="form-control") }}
+    {{ form.sub_title.label(class="form-label") }}: {{ form.sub_title(class="form-control") }}
+    {{ form.author.label(class="form-label") }}: {{ form.author(class="form-control") }}
+    {{ form.body.label(class="form-label") }}: {{ form.body(class="form-control", style="height:150px;") }}
+    {{ form.img_url.label(class="form-label") }}: {{ form.img_url(class="form-control") }}
+    <br><br>
+    {{ form.submit(class="form-control btn btn-primary")}}
+
+    <br><br><br><br>
+</form>
+
+{% endblock %}

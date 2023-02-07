@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+{% if get_flashed_messages() %}
+<div class="alert alert-success alert-dismissible fade show">
+    {% for message in get_flashed_messages() %}
+     {{  message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
+</div>
+{% endif %}
+<br>
+<h1>Update user: <em>{{ name_to_update.name }}</em></h1>
+<br>
+<div class="shadow p-3 mb-5 bg-body rounded">
+<form action="/update/{{ name_to_update.id }}" method="post">
+
+    {{ form.hidden_tag() }}
+    <br>
+    {{ form.name.label(class="form-label") }} {{ form.name(class="form-control", value=name_to_update.name) }}
+    <br>
+    {{ form.email.label(class="form-label") }} {{ form.email(class="form-control", value=name_to_update.email) }}
+    <br>
+    {{ form.fave_color.label(class="form-label") }} {{ form.fave_color(class="form-control", value=name_to_update.fave_color) }}
+    <br>
+     <br>
+    {{ form.password_hash.label(class="form-label") }} {{ form.password_hash(class="form-control", value=name_to_update.password_hash) }}
+    <br>
+     {{ form.password_hash2.label(class="form-label") }} {{ form.password_hash2(class="form-control", value=name_to_update.password_hash2) }}
+    <br>
+    <a class="btn btn-danger" href="{{ url_for('delete', id=name_to_update.id) }}">Delete</a>
+        {{ form.submit(class="btn btn-primary") }}
+<br><br>
+</form>
+</div>
+    <br>
+<h3>List of users:</h3>
+<br>
+
+<table class="shadow p-3 mb-5 bg-body rounded table table-hover table-bordered table-striped">
+    <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+        <th>Fave color</th>
+        <th>Password</th>
+        <th></th>
+  </tr>
+{% for user in users%}
+    <tr>
+        <td>{{ user.id }}</td>
+            <td><a href="{{ url_for('update', id=user.id) }}">{{ user.name }}</a></td>
+            <td>{{user.email}}</td>
+        <td>{{user.fave_color}}</td>
+        <td>{{user.password_hash }}</td>
+        <td><a class="btn btn-danger btn-sm" href="{{ url_for('delete', id=user.id) }}">Delete</a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

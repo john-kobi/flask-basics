@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if get_flashed_messages() %}
+<br>
+<div class="alert alert-success alert-dismissible fade show">
+    {% for message in get_flashed_messages() %}
+     Hey <b>{{ name }}</b> {{  message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+
+{% if name %}
+<p>Hello {{ name }}</p>
+        {% if name == 'John' %}
+    <img src="{{ url_for('static', filename='images/john.jpg')}}">
+    <p id="demo"></p>
+    {% endif %}
+    {% else %}
+
+</div>
+
+
+<!--<form method="POST">-->
+<!--    {{ form.hidden_tag() }}-->
+<!--    <br>-->
+<!--    {{ form.name.label(class="form-label") }}-->
+<!--    <br>-->
+<!--    {{ form.name(class="form-control") }}-->
+<!--    <br>-->
+<!--    {{ form.submit(class="btn btn-primary") }}-->
+<!--</form>-->
+<form method="POST">
+    <p>Enter your name below please</p>
+    <h7>*We will harvest your data and your organs</h7>
+    <br>
+    {% for field in form %}
+    {{ field }}
+    {% endfor %}
+</form>
+{% endif %}
+{% endblock %}

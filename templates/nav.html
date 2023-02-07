@@ -1,15 +1,33 @@
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Brand Logo®</a>
+    <a class="navbar-brand" href="{{ url_for('index')}}">Brand Logo®</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user', name='john') }}">User</a>
+          <a class="nav-link" href="{{ url_for('name') }}">User</a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('add_user') }}">Add user</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('test_pw') }}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('get_date') }}">Date</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('all_posts') }}">All posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('add_post') }}">Add post</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

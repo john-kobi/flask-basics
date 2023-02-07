@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<br>
+{% if name %}
+<h1>Welcome <em>{{ name }}!</em></h1>
+{% endif %}
+<br><br>
+<div class="alert alert-success alert-dismissible fade show">
+    {% for message in get_flashed_messages() %}
+     {{  message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
+</div>
+<br>
+<h3>Want to be spammed?</h3>
+<br>
+{% if name == None %}
+<div class="shadow p-3 mb-5 bg-body rounded">
+<form class="form" method="post">
+    <br>
+
+    {% if message %}
+    {% for messages in message %}
+    {{ messages }}
+    {% endfor %}
+    {% endif %}
+    {{ form.hidden_tag() }}
+    {{ form.name.label(class="form-label") }} {{ form.name(class="form-control") }}
+    {{ form.username.label(class="form-label") }} {{ form.username(class="form-control") }} <br>
+    {{ form.email.label(class="form-label") }} {{ form.email(class="form-control") }} <br>
+
+    {{ form.password_hash.label(class="form-label") }} {{ form.password_hash(class="form-control") }} <br>
+    {{ form.password_hash2.label(class="form-label") }} {{ form.password_hash2(class="form-control") }} <br>
+
+    {{ form.fave_color.label(class="form-label") }} {{ form.fave_color(class="form-control") }} <br>
+    {{ form.submit(class="form-control btn btn-primary") }} <br>
+</form>
+    </div>
+{% endif %}
+
+<h3>List of users:</h3>
+<br><br>
+
+
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+    <th>ID</th>
+    <th>Name</th>
+        <th>Username</th>
+    <th>Email</th>
+        <th>Password</th>
+        <th></th>
+  </tr>
+    {% if users %}
+{% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+            <td><a href="{{ url_for('update', id=user.id) }}">{{ user.name }}</a></td>
+        <td>{{ user.username }}</td>
+            <td>{{user.email}}</td>
+        <td>{{user.password_hash}}</td>
+            <td><a class="btn btn-danger btn-sm" href="{{ url_for('delete', id=user.id) }}">Delete</a></td>
+    </tr>
+{% endfor %}
+    {% endif %}
+</table>
+
+</div>
+
+{% endblock %}

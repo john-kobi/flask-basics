@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="alert alert-warning alert-dismissible fade ">
+    {% for message in get_flashed_messages() %}
+     {{  message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
+</div>
+
+
+<!--{% for post in posts %}-->
+<!--<div class="card">-->
+
+<!--<a class="display-5" href="{{ url_for('show_post', id=post.id)}}">{{ post.title }}</a>-->
+<!--    <br>-->
+<!--    <h3 class="display-7"> {{ post.sub_title }} </h3>-->
+<!--    <h6>{{ post.date }}</h6>-->
+<!--    <br>-->
+<!--    <p class="display-7"> {{ post.body }}</p>-->
+<!--    <h6 class="display-8">By {{ post.author }}</h6>-->
+
+<!--    <br>-->
+<!--    <img style="height:100px;" src="{{ post.img_url }}">-->
+<!--    <br><br>-->
+<!--</div>-->
+<!--<br>-->
+<!--   {% endfor %}-->
+
+<!--Card style layout -->
+<!--{% for post in posts %}-->
+<!--<div class="card" style="width: 18rem;">-->
+<!--  <img src="{{ post.img_url }}" class="card-img-top" alt="...">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">{{ post.title }}</h5>-->
+<!--    <p class="card-text">{{ post.body }}</p>-->
+<!--    <a href="{{url_for('show_post', id=post.id)}}" class="btn btn-primary">{{ post.title }}</a>-->
+<!--  </div>-->
+<!--</div>-->
+<!--{% endfor %}-->
+
+<!--JUMBOTRON example-->
+{% for post in posts %}
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <a href="{{ url_for('show_post', id=post.id)}}" class="display-5 fw-bold">{{ post.title }}</a>
+        <p class="col-md-8 fs-4">{{ post.body }}</p>
+
+          <img style="max-width:400px;max-height:400px" src="{{ post.img_url }}">
+          <br><br>
+        <a href="{{ url_for('show_post', id=post.id) }}" class="btn btn-primary btn-lg" type="button">Read more…</a>
+          <br><br>
+          <a class="btn btn-warning" href="{{ url_for('edit_post', id=post.id)}}">Edit</a>
+          <a class="btn btn-secondary" href="{{ url_for('delete_post', id=post.id)}}">Delete</a>
+      </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

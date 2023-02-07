@@ -1,0 +1,8 @@
+# Setting up MYSQL database:
+1. New terminal window
+2. mysql -u root -p
+3. Enter password for MYSQL
+# Create a new database
+4. create database name;
+# Show all dbs
+5. show databases;
