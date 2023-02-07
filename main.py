@@ -66,18 +66,18 @@ with app.app_context():
             return '<Name %r>' % self.name
 
     # Use only once to create the database
-    db.create_all()
-    db.session.commit()
-    new_post = Posts(
-        title="john",
-        sub_title="is",
-        author="a",
-        body="body text",
-        date='today',
-        img_url="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_2x1.jpg"
-    )
-    db.session.add(new_post)
-    db.session.commit()
+    # db.create_all()
+    # db.session.commit()
+    # new_post = Posts(
+    #     title="john",
+    #     sub_title="is",
+    #     author="a",
+    #     body="body text",
+    #     date='today',
+    #     img_url="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_2x1.jpg"
+    # )
+    # db.session.add(new_post)
+    # db.session.commit()
 
 
 class PostForm(FlaskForm):
